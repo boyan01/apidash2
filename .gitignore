@@ -45,12 +45,7 @@ app.*.map.json
 
 # Platform specific files
 
-linux/
-macos/
-windows/
 web/
-ios/
-android/
 .vscode/*
 icons/
 coverage/*
