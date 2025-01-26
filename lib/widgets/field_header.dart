@@ -12,6 +12,7 @@ class HeaderField extends StatefulWidget {
     this.onChanged,
     this.colorScheme,
   });
+
   final String keyId;
   final String? hintText;
   final String? initialValue;
@@ -64,7 +65,12 @@ class _HeaderFieldState extends State<HeaderField> {
       },
       itemBuilder: (context, String suggestion) {
         return ListTile(
+          minTileHeight: 24,
           dense: true,
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 4,
+            vertical: 0,
+          ),
           title: Text(suggestion),
         );
       },
@@ -76,7 +82,8 @@ class _HeaderFieldState extends State<HeaderField> {
         onChanged: widget.onChanged,
         controller: controller,
         focusNode: focusNode,
-        style: kCodeStyle.copyWith(
+        style: TextStyle(
+          fontSize: 14,
           color: colorScheme.onSurface,
         ),
         decoration: InputDecoration(
@@ -107,9 +114,8 @@ class _HeaderFieldState extends State<HeaderField> {
       data: ThemeData(colorScheme: colorScheme),
       child: Material(
         elevation: 4,
-        shape: RoundedRectangleBorder(
-          side: BorderSide(color: Theme.of(context).dividerColor, width: 1.2),
-          borderRadius: const BorderRadius.vertical(bottom: Radius.circular(8)),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(8)),
         ),
         clipBehavior: Clip.hardEdge,
         child: child,

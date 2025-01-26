@@ -57,21 +57,21 @@ class EditRequestHeadersState extends ConsumerState<EditRequestHeaders> {
     List<DataColumn> columns = const [
       DataColumn2(
         label: Text(kNameCheckbox),
-        fixedWidth: 30,
+        fixedWidth: 24,
       ),
       DataColumn2(
         label: Text(kNameHeader),
       ),
       DataColumn2(
         label: Text('='),
-        fixedWidth: 30,
+        fixedWidth: 16,
       ),
       DataColumn2(
         label: Text(kNameValue),
       ),
       DataColumn2(
         label: Text(''),
-        fixedWidth: 32,
+        fixedWidth: 24,
       ),
     ];
 
@@ -170,52 +170,30 @@ class EditRequestHeadersState extends ConsumerState<EditRequestHeaders> {
       },
     );
 
-    return Stack(
-      children: [
-        Container(
-          margin: kP10,
-          child: Column(
-            children: [
-              Expanded(
-                child: Theme(
-                  data: Theme.of(context)
-                      .copyWith(scrollbarTheme: kDataTableScrollbarTheme),
-                  child: DataTable2(
-                    columnSpacing: 12,
-                    dividerThickness: 0,
-                    horizontalMargin: 0,
-                    headingRowHeight: 0,
-                    dataRowHeight: kDataTableRowHeight,
-                    bottomMargin: kDataTableBottomPadding,
-                    isVerticalScrollBarVisible: true,
-                    columns: columns,
-                    rows: dataRows,
-                  ),
-                ),
-              ),
-              kVSpacer40,
-            ],
-          ),
-        ),
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: Padding(
-            padding: kPb15,
-            child: ElevatedButton.icon(
-              onPressed: () {
-                headerRows.add(kNameValueEmptyModel);
-                isRowEnabledList.add(false);
-                _onFieldChange();
-              },
-              icon: const Icon(Icons.add),
-              label: const Text(
-                kLabelAddHeader,
-                style: kTextStyleButton,
+    return Container(
+      margin: kP4,
+      child: Column(
+        children: [
+          Expanded(
+            child: Theme(
+              data: Theme.of(context)
+                  .copyWith(scrollbarTheme: kDataTableScrollbarTheme),
+              child: DataTable2(
+                columnSpacing: 4,
+                dividerThickness: 0,
+                horizontalMargin: 0,
+                headingRowHeight: 0,
+                dataRowHeight: kDataTableRowHeight,
+                bottomMargin: kDataTableBottomPadding,
+                isVerticalScrollBarVisible: true,
+                columns: columns,
+                rows: dataRows,
               ),
             ),
           ),
-        ),
-      ],
+          kVSpacer40,
+        ],
+      ),
     );
   }
 }
