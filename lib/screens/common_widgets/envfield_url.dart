@@ -19,22 +19,26 @@ class EnvURLField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return EnvironmentTriggerField(
-      keyId: "url-$selectedId",
-      initialValue: initialValue,
-      style: kCodeStyle,
-      decoration: InputDecoration(
-        hintText: kHintTextUrlCard,
-        hintStyle: kCodeStyle.copyWith(
-          color: Theme.of(context).colorScheme.outline.withOpacity(
-                kHintOpacity,
-              ),
+    return ConstrainedBox(
+      constraints: const BoxConstraints(maxHeight: 64),
+      child: EnvironmentTriggerField(
+        keyId: "url-$selectedId",
+        initialValue: initialValue,
+        style: const TextStyle(fontSize: 14),
+        maxLines: null,
+        decoration: InputDecoration(
+          hintText: kHintTextUrlCard,
+          hintStyle: kCodeStyle.copyWith(
+            color: Theme.of(context).colorScheme.outline.withOpacity(
+                  kHintOpacity,
+                ),
+          ),
+          border: InputBorder.none,
         ),
-        border: InputBorder.none,
+        onChanged: onChanged,
+        onFieldSubmitted: onFieldSubmitted,
+        optionsWidthFactor: 1,
       ),
-      onChanged: onChanged,
-      onFieldSubmitted: onFieldSubmitted,
-      optionsWidthFactor: 1,
     );
   }
 }

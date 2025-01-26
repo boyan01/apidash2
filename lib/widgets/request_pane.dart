@@ -77,7 +77,7 @@ class _RequestPaneState extends State<RequestPane>
                   ),
                 ),
               )
-            : kVSpacer10,
+            : kVSpacer4,
         TabBar(
           key: Key(widget.selectedId!),
           controller: controller,
@@ -93,7 +93,7 @@ class _RequestPaneState extends State<RequestPane>
               )
               .toList(),
         ),
-        kVSpacer5,
+        kVSpacer2,
         Expanded(
           child: TabBarView(
             controller: controller,

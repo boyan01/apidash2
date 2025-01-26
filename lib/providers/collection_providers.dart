@@ -243,12 +243,14 @@ class CollectionStateNotifier
       httpRequestModel: currentHttpRequestModel?.copyWith(
         method: method ?? currentHttpRequestModel.method,
         url: url ?? currentHttpRequestModel.url,
-        headers: headers ?? currentHttpRequestModel.headers,
-        params: params ?? currentHttpRequestModel.params,
+        headers: headers?.where((e) => !e.isEmpty).toList() ??
+            currentHttpRequestModel.headers,
+        params: params?.where((e) => !e.isEmpty).toList() ??
+            currentHttpRequestModel.params,
         isHeaderEnabledList:
-            isHeaderEnabledList ?? currentHttpRequestModel.isHeaderEnabledList,
+        isHeaderEnabledList ?? currentHttpRequestModel.isHeaderEnabledList,
         isParamEnabledList:
-            isParamEnabledList ?? currentHttpRequestModel.isParamEnabledList,
+        isParamEnabledList ?? currentHttpRequestModel.isParamEnabledList,
         bodyContentType:
             bodyContentType ?? currentHttpRequestModel.bodyContentType,
         body: body ?? currentHttpRequestModel.body,

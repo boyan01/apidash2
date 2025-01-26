@@ -28,9 +28,10 @@ class ADDropdownButton<T> extends StatelessWidget {
     final surfaceColor = Theme.of(context).colorScheme.surface;
     return DropdownButton<T>(
       isExpanded: isExpanded,
-      isDense: isDense,
+      isDense: true,
       focusColor: surfaceColor,
       value: value,
+      padding: kP4,
       icon: Icon(
         Icons.unfold_more_rounded,
         size: iconSize,
@@ -47,8 +48,9 @@ class ADDropdownButton<T> extends StatelessWidget {
       items: values.map<DropdownMenuItem<T>>(((T, String?) value) {
         return DropdownMenuItem<T>(
           value: value.$1,
+          alignment: Alignment.center,
           child: Padding(
-            padding: dropdownMenuItemPadding,
+            padding: kP4,
             child: Text(
               value.$2 ?? value.$1.toString(),
               style:

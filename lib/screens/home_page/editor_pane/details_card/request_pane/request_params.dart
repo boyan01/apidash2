@@ -1,12 +1,13 @@
 import 'dart:math';
+
+import 'package:apidash/consts.dart';
+import 'package:apidash/providers/providers.dart';
+import 'package:apidash/screens/common_widgets/common_widgets.dart';
 import 'package:apidash_core/apidash_core.dart';
 import 'package:apidash_design_system/apidash_design_system.dart';
+import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:data_table_2/data_table_2.dart';
-import 'package:apidash/providers/providers.dart';
-import 'package:apidash/consts.dart';
-import 'package:apidash/screens/common_widgets/common_widgets.dart';
 
 class EditRequestURLParams extends ConsumerStatefulWidget {
   const EditRequestURLParams({super.key});
@@ -62,21 +63,21 @@ class EditRequestURLParamsState extends ConsumerState<EditRequestURLParams> {
     List<DataColumn> columns = const [
       DataColumn2(
         label: Text(kNameCheckbox),
-        fixedWidth: 30,
+        fixedWidth: 24,
       ),
       DataColumn2(
         label: Text(kNameURLParam),
       ),
       DataColumn2(
         label: Text('='),
-        fixedWidth: 30,
+        fixedWidth: 16,
       ),
       DataColumn2(
         label: Text(kNameValue),
       ),
       DataColumn2(
         label: Text(''),
-        fixedWidth: 32,
+        fixedWidth: 24,
       ),
     ];
 
@@ -175,53 +176,23 @@ class EditRequestURLParamsState extends ConsumerState<EditRequestURLParams> {
       },
     );
 
-    return Stack(
-      children: [
-        Container(
-          margin: kP10,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Expanded(
-                child: Theme(
-                  data: Theme.of(context)
-                      .copyWith(scrollbarTheme: kDataTableScrollbarTheme),
-                  child: DataTable2(
-                    columnSpacing: 12,
-                    dividerThickness: 0,
-                    horizontalMargin: 0,
-                    headingRowHeight: 0,
-                    dataRowHeight: kDataTableRowHeight,
-                    bottomMargin: kDataTableBottomPadding,
-                    isVerticalScrollBarVisible: true,
-                    columns: columns,
-                    rows: dataRows,
-                  ),
-                ),
-              ),
-              kVSpacer40,
-            ],
-          ),
+    return Container(
+      margin: kP4,
+      child: Theme(
+        data: Theme.of(context)
+            .copyWith(scrollbarTheme: kDataTableScrollbarTheme),
+        child: DataTable2(
+          columnSpacing: 4,
+          dividerThickness: 0,
+          horizontalMargin: 0,
+          headingRowHeight: 0,
+          dataRowHeight: kDataTableRowHeight,
+          bottomMargin: kDataTableBottomPadding,
+          isVerticalScrollBarVisible: true,
+          columns: columns,
+          rows: dataRows,
         ),
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: Padding(
-            padding: kPb15,
-            child: ElevatedButton.icon(
-              onPressed: () {
-                paramRows.add(kNameValueEmptyModel);
-                isRowEnabledList.add(false);
-                _onFieldChange();
-              },
-              icon: const Icon(Icons.add),
-              label: const Text(
-                kLabelAddParam,
-                style: kTextStyleButton,
-              ),
-            ),
-          ),
-        ),
-      ],
+      ),
     );
   }
 }

@@ -25,10 +25,7 @@ class EditorPaneRequestURLCard extends ConsumerWidget {
         borderRadius: kBorderRadius12,
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(
-          vertical: 5,
-          horizontal: !context.isMediumWindow ? 20 : 6,
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: 4),
         child: context.isMediumWindow
             ? Row(
                 children: [
@@ -54,15 +51,15 @@ class EditorPaneRequestURLCard extends ConsumerWidget {
                     null => kSizedBoxEmpty,
                   },
                   switch (apiType) {
-                    APIType.rest => kHSpacer20,
+                    APIType.rest => kHSpacer2,
                     _ => kHSpacer8,
                   },
                   const Expanded(
                     child: URLTextField(),
                   ),
-                  kHSpacer20,
+                  kHSpacer4,
                   const SizedBox(
-                    height: 36,
+                    height: 32,
                     child: SendRequestButton(),
                   )
                 ],
@@ -119,6 +116,7 @@ class URLTextField extends ConsumerWidget {
 
 class SendRequestButton extends ConsumerWidget {
   final Function()? onTap;
+
   const SendRequestButton({
     super.key,
     this.onTap,

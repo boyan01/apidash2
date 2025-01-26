@@ -32,8 +32,6 @@ class EditRequestHeadersState extends ConsumerState<EditRequestHeaders> {
   void _onFieldChange() {
     ref.read(collectionStateNotifierProvider.notifier).update(
           headers: headerRows.sublist(0, headerRows.length - 1),
-          isHeaderEnabledList:
-              isRowEnabledList.sublist(0, headerRows.length - 1),
         );
   }
 
@@ -51,11 +49,7 @@ class EditRequestHeadersState extends ConsumerState<EditRequestHeaders> {
           ]
         : rH + [kNameValueEmptyModel];
     isRowEnabledList = [
-      ...(ref
-              .read(selectedRequestModelProvider)
-              ?.httpRequestModel
-              ?.isHeaderEnabledList ??
-          List.filled(rH?.length ?? 0, true, growable: true))
+      ...(List.filled(rH?.length ?? 0, true, growable: true))
     ];
     isRowEnabledList.add(false);
     isAddingRow = false;

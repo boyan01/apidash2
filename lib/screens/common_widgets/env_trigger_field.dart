@@ -14,6 +14,7 @@ class EnvironmentTriggerField extends StatefulWidget {
     this.style,
     this.decoration,
     this.optionsWidthFactor,
+    this.maxLines = 1,
   });
 
   final String keyId;
@@ -23,6 +24,7 @@ class EnvironmentTriggerField extends StatefulWidget {
   final TextStyle? style;
   final InputDecoration? decoration;
   final double? optionsWidthFactor;
+  final int? maxLines;
 
   @override
   State<EnvironmentTriggerField> createState() =>
@@ -106,6 +108,7 @@ class EnvironmentTriggerFieldState extends State<EnvironmentTriggerField> {
           style: widget.style,
           onChanged: widget.onChanged,
           onSubmitted: widget.onFieldSubmitted,
+          maxLines: widget.maxLines,
           specialTextSpanBuilder: EnvRegExpSpanBuilder(),
           onTapOutside: (event) {
             focusNode.unfocus();

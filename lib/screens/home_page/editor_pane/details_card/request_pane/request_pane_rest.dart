@@ -29,6 +29,7 @@ class EditRestRequestPane extends ConsumerWidget {
 
     return RequestPane(
       selectedId: selectedId,
+      showViewCodeButton: false,
       codePaneVisible: codePaneVisible,
       tabIndex: tabIndex,
       onPressedCodeButton: () {

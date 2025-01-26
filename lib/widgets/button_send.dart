@@ -19,21 +19,23 @@ class SendButton extends StatelessWidget {
     return ADFilledButton(
       onPressed: isWorking ? onCancel : onTap,
       isTonal: isWorking ? true : false,
+      buttonStyle: const ButtonStyle(
+        padding: WidgetStatePropertyAll(EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 2,
+        )),
+        minimumSize: WidgetStatePropertyAll(
+          Size(24, 24),
+        ),
+      ),
       items: isWorking
           ? const [
-              kHSpacer8,
-              Text(
-                kLabelCancel,
-                style: kTextStyleButton,
+              Icon(
+                size: 16,
+                Icons.close,
               ),
-              kHSpacer6,
             ]
           : const [
-              Text(
-                kLabelSend,
-                style: kTextStyleButton,
-              ),
-              kHSpacer10,
               Icon(
                 size: 16,
                 Icons.send,

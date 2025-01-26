@@ -87,8 +87,14 @@ dev_dependencies:
   melos: ^6.2.0
   spot: ^0.13.0
   test: ^1.25.2
+  intl_utils: ^2.8.7
 
 flutter:
   uses-material-design: true
   assets:
     - assets/
+
+flutter_intl:
+  enabled: true
+  class_name: Localization
+  use_deferred_loading: false

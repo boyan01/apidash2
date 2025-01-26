@@ -24,21 +24,22 @@ class EnvCellField extends StatelessWidget {
     return EnvironmentTriggerField(
       keyId: keyId,
       initialValue: initialValue,
-      style: kCodeStyle.copyWith(
+      style: TextStyle(
         color: clrScheme.onSurface,
+        fontSize: 14,
       ),
       decoration: InputDecoration(
-        hintStyle: kCodeStyle.copyWith(
-          color: clrScheme.outline.withOpacity(
-            kHintOpacity,
+        hintStyle: TextStyle(
+          color: clrScheme.outline.withValues(
+            alpha: kHintOpacity,
           ),
         ),
         hintText: hintText,
         contentPadding: const EdgeInsets.only(bottom: 12),
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: clrScheme.primary.withOpacity(
-              kHintOpacity,
+            color: clrScheme.primary.withValues(
+              alpha: kHintOpacity,
             ),
           ),
         ),

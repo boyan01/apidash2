@@ -36,7 +36,6 @@ final kEnvScaffoldKey = GlobalKey<ScaffoldState>();
 final kHisScaffoldKey = GlobalKey<ScaffoldState>();
 
 const kTabAnimationDuration = Duration(milliseconds: 200);
-const kTabHeight = 40.0;
 const kHeaderHeight = 32.0;
 const kSegmentHeight = 24.0;
 const kTextButtonMinWidth = 44.0;
