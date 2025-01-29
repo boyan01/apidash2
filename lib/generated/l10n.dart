@@ -49,6 +49,36 @@ class Localization {
   static Localization? maybeOf(BuildContext context) {
     return Localizations.of<Localization>(context, Localization);
   }
+
+  /// `Environment Variable`
+  String get environmentVariable {
+    return Intl.message(
+      'Environment Variable',
+      name: 'environmentVariable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Headers`
+  String get headers {
+    return Intl.message(
+      'Headers',
+      name: 'headers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Query Parameters`
+  String get queryParameters {
+    return Intl.message(
+      'Query Parameters',
+      name: 'queryParameters',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<Localization> {

@@ -9,6 +9,22 @@ String getEnvironmentTitle(String? name) {
   return name;
 }
 
+List<EnvironmentVariableModel> getEnvironmentByType(
+    EnvironmentModel? environment, EnvironmentVariableType type,
+    {bool removeEmptyModels = false}) {
+  if (environment == null) {
+    return [];
+  }
+  return environment.values
+      .where((element) =>
+          element.type == type &&
+          (removeEmptyModels
+              ? element != kEnvironmentVariableEmptyModel &&
+                  element != kEnvironmentSecretEmptyModel
+              : true))
+      .toList();
+}
+
 List<EnvironmentVariableModel> getEnvironmentVariables(
     EnvironmentModel? environment,
     {bool removeEmptyModels = false}) {

@@ -1,3 +1,4 @@
+import 'package:apidash/utils/extensions/context.dart';
 import 'package:apidash_design_system/apidash_design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -41,14 +42,17 @@ class EnvironmentEditor extends ConsumerWidget {
                       width: 6,
                     ),
                     EditorTitleActions(
-                      onRenamePressed: () {
-                        showRenameDialog(context, "Rename Environment", name,
-                            (val) {
-                          ref
-                              .read(environmentsStateNotifierProvider.notifier)
-                              .updateEnvironment(id!, name: val);
-                        });
-                      },
+                      onRenamePressed: id == kGlobalEnvironmentId
+                          ? null
+                          : () {
+                              showRenameDialog(
+                                  context, "Rename Environment", name, (val) {
+                                ref
+                                    .read(environmentsStateNotifierProvider
+                                        .notifier)
+                                    .updateEnvironment(id!, name: val);
+                              });
+                            },
                       onDuplicatePressed: () => ref
                           .read(environmentsStateNotifierProvider.notifier)
                           .duplicateEnvironment(id!),
@@ -84,25 +88,42 @@ class EnvironmentEditor extends ConsumerWidget {
                         borderRadius: kBorderRadius12,
                       ),
                 elevation: 0,
-                child: const Padding(
-                  padding: kPv6,
-                  child: Column(
-                    children: [
-                      kHSpacer40,
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          SizedBox(width: 30),
-                          Text("Variable"),
-                          SizedBox(width: 30),
-                          Text("Value"),
-                          SizedBox(width: 40),
-                        ],
-                      ),
-                      kHSpacer40,
-                      Divider(),
-                      Expanded(child: EditEnvironmentVariables())
-                    ],
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Text(
+                          context.strings.environmentVariable,
+                          style: Theme.of(context).textTheme.bodySmall,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                        ),
+                        const EditEnvironmentVariables(
+                          type: EnvironmentVariableType.variable,
+                        ),
+                        Text(
+                          context.strings.headers,
+                          style: Theme.of(context).textTheme.bodySmall,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                        ),
+                        const EditEnvironmentVariables(
+                          type: EnvironmentVariableType.header,
+                        ),
+                        Text(
+                          context.strings.queryParameters,
+                          style: Theme.of(context).textTheme.bodySmall,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                        ),
+                        const EditEnvironmentVariables(
+                          type: EnvironmentVariableType.params,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
